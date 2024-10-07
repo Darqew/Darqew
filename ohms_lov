@@ -1,0 +1,104 @@
+import math
+lov = True
+
+while lov:
+    #---------------------#
+    #Amps A
+    print("(It can end with nothing, A, mA, or uA)")
+    I = input("what is the I / Amp value?: ")
+    if I.count("mA")>0:
+        I = I.replace("mA","")
+        I = float(I)
+        I = I/pow(10,3)
+        pass
+
+    elif I.count("uA") > 0:
+        I = I.replace("uA","")
+        I = I.replace("µA","")
+        I = float(I)
+        I = I/pow(10,5)
+        pass
+
+    elif I.count("A")>0:
+        I = I.replace("A","")
+        I = float(I)
+        pass
+    
+    elif len(I) == 0:
+        I = float(0)
+        pass
+    
+    else:
+        I = float(I)
+        pass
+    print(f"the I value is {I}A")
+    print("")
+
+
+    #voltage V
+    print("(It can end with nothing, V or v)")
+    U = input("what is the U / voltage value?: ")
+    if U.count("V") or U.count("v") > 0:
+        U = U.replace("V", "")
+        U = U.replace("v", "")
+        U = float(U)
+        pass
+    elif len(U) == 0:
+        U = float(0)
+        pass
+    else:
+        U = float(U)
+    print(f"the U value is {U}V")
+    print("")
+
+
+    #resistance ohm
+    print("(It can end with nothing, k, K, or ohm)")
+    R = input("what is the R / Resistance value?: ")
+    if R.count("k") or R.count("K") > 0:
+        R = R.replace("k", "000")
+        R = R.replace("K", "000")
+        R = int(R)
+        print(type(I))
+        pass
+    
+    elif R.count("ohm") > 0:
+        R = R.replace("ohm", "")
+        pass
+    
+    elif len(R) == 0:
+        R = int(0)
+        pass
+    
+    else:
+        R = int(R)
+        pass
+    print(f"the R value is {R}Ω")
+    print("")
+    #power W
+    P = 0
+
+
+    #---------------------#
+
+
+
+        
+    if I>0 and R>0:
+        #for at regne U / V / Volt
+        print("")
+        print(f"Voltage is found by 	{I}A * {R}Ω =", round(I*R,6),"V")
+        print("")
+        
+        #for at regne I / A / Ampere
+    if U>0 and R>0:
+        print(f"Ampere is found by 	{U}V / {R}Ω   =", round(U/R,6), "A")
+        print("And				         =", round(U/R*(pow(10,3)),6), "mA")
+        print("And				         =", round(U/R*(pow(10,5)),5), "µA")
+        print("")
+        
+        #For at regne R / Ω / resistance
+    if I>0 and U>0:
+        print(f"resistance is found by 	{U}V / {I}A  =", round(U/I,2),"Ω")
+    break
+
